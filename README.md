@@ -10,9 +10,9 @@ just a single line of code.
 Examples avaible here in the README don't offer up the full scope of usefulness,
 so take the time to look at the example documentation in the full docs page.
 
-View full docs at: https://stkterry.github.io/KDict
+View full docs at: https://stkterry.github.io/KDict/
 
-View source code at: https://github.com/stkterry/KDict
+View source code at: https://github.com/stkterry/KDict/
 
 {file:doc/Example1.md}
 
