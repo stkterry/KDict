@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Module: KwargTypes
+  
+    &mdash; Documentation by YARD 0.9.19
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "KwargTypes";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="_index.html">Index (K)</a> &raquo;
+    
+    
+    <span class="title">KwargTypes</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Module: KwargTypes
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+
+  
+  
+  
+  
+  
+
+  
+  <dl>
+    <dt>Included in:</dt>
+    <dd><span class='object_link'><a href="KwargDict.html" title="KwargDict (class)">KwargDict</a></span></dd>
+  </dl>
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/kdict/kwargdict/kwargtypes.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>KwargTypes is a collection of generic definitions that are called as parameters from <span class='object_link'><a href="KwargDict.html" title="KwargDict (class)">KwargDict</a></span>.  Each definition or <strong>typedef</strong> validates a user&#39;s input against models built in the dictionary. Every <strong>typedef</strong> receives a user&#39;s argument and an associated <strong>struct</strong>, and checks to see if that argument passes the <strong>struct</strong>&#39;s unique conditions. All <strong>typedefs</strong> return Boolean.  Some <strong>typedefs</strong> can receive a Proc that further modifies the <strong>struct</strong>&#39;s behavior by adding to (but never overridding) its conditions for truthiness.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="types-classvariable" class="">@@types =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>Used internally.  Gives <strong>typedefs</strong> access to a modified list of generic datatypes.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='lbracket'>[</span><span class='const'>Numeric</span><span class='comma'>,</span> <span class='const'>Float</span><span class='comma'>,</span> <span class='const'>Integer</span><span class='comma'>,</span> <span class='const'>Hash</span><span class='comma'>,</span> <span class='const'>Array</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="Bool.html" title="Bool (module)">Bool</a></span></span><span class='comma'>,</span> <span class='const'>String</span><span class='comma'>,</span> <span class='const'>Symbol</span><span class='rbracket'>]</span></pre></dd>
+      
+        <dt id="typedefs-classvariable" class="">@@typedefs =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>Used by KwargDict to check against listed definitions before accepting a new KwargModel.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='lbracket'>[</span><span class='symbol'>:typeof</span><span class='comma'>,</span> <span class='symbol'>:arrayof</span><span class='comma'>,</span> <span class='symbol'>:anyof</span><span class='comma'>,</span> <span class='symbol'>:anyNof</span><span class='comma'>,</span> <span class='symbol'>:formof</span><span class='comma'>,</span> <span class='symbol'>:kwargsof</span><span class='comma'>,</span>
+<span class='symbol'>:adv_formof</span><span class='comma'>,</span> <span class='symbol'>:and_kwargsof</span><span class='rbracket'>]</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#adv_formof-instance_method" title="#adv_formof (instance method)">#<strong>adv_formof</strong>(arg, struct)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<h4 id="label-Your+struct+contains+an+array+of+exact+length-2C+each+of+whom-27s+elements+has+its+own+subset+of+typedef-2C+struct-2C+and+possibly+prc.">Your <strong>struct</strong> contains an array of exact length, each of whom&#39;s elements has its own subset of <strong>typedef</strong>, <strong>struct</strong>, and possibly <strong>prc</strong>.</h4>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#and_kwargsof-instance_method" title="#and_kwargsof (instance method)">#<strong>and_kwargsof</strong>(arg, struct)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<h4 id="label-Your+struct+is+structured+like+-3Aadv_formof+but+the+last+element+MUST+be+a+-3Akwargsof+typedef+-2A+structs+-+MUST+be+an+array+in+the+form+of+-3Aadv_formof-2C+but+the+last+sub++++typedef+MUST+be+a+kwargsof+-2A+Will+return+true+if+given+a+single+value+that+returns+true+from+the+first+sub+typedef+in+the+array.">Your <strong>struct</strong> is structured like <strong>:adv_formof</strong> but the last element MUST be a <strong>:kwargsof</strong> <strong>typedef</strong> * <strong>structs</strong> - MUST be an array in the form of <strong>:adv_formof</strong>, but the last sub    <strong>typedef</strong> MUST be a <strong>kwargsof</strong> * Will return true if given a single value that returns true from the first sub <strong>typedef</strong> in the array.</h4>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#anyNof-instance_method" title="#anyNof (instance method)">#<strong>anyNof</strong>(arg, struct, prc = nil)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<h4 id="label-Your+struct+contains+an+element+OR+specific+datatype+in+an+array.">Your <strong>struct</strong> contains an element OR specific datatype in an array.</h4>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#anyof-instance_method" title="#anyof (instance method)">#<strong>anyof</strong>(arg, struct)  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<h4 id="label-Your+struct+contains+a+singular+element+that+can+be+found+in+an+array.">Your <strong>struct</strong> contains a singular element that can be found in an array.</h4>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#arrayof-instance_method" title="#arrayof (instance method)">#<strong>arrayof</strong>(arg, struct, prc = nil)  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<h4 id="label-Your+struct+contains+an+array+of+any+length+but+contain+only+one+datatype.">Your <strong>struct</strong> contains an array of any length but contain only one datatype.</h4>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#formof-instance_method" title="#formof (instance method)">#<strong>formof</strong>(arg, struct, prc = nil)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<h4 id="label-Your+struct+contains+an+array+of+exact+length-2C+you+expect+each+element+to+be+contained+in+a+specific+order+and+be+a+generic+datatype.">Your <strong>struct</strong> contains an array of exact length, you expect each element to be contained in a specific order and be a generic datatype.</h4>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#kwargsof-instance_method" title="#kwargsof (instance method)">#<strong>kwargsof</strong>(arg, struct)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<h4 id="label-Your+struct+contains+a+hash+that+corresponds+to+another+KwargDict+-2A+-2A-2Astructs-2A-2A+-+Can+only+be+another+KwargDict+instance.">Your <strong>struct</strong> contains a hash that corresponds to another KwargDict * **<strong>structs</strong>** - Can only be another KwargDict instance.</h4>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#typeof-instance_method" title="#typeof (instance method)">#<strong>typeof</strong>(arg, struct, prc = nil)  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<h4 id="label-Your+struct+contains+a+singular+value+of+exactly+one+datatype.">Your <strong>struct</strong> contains a singular value of exactly one datatype.</h4>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="adv_formof-instance_method">
+  
+    #<strong>adv_formof</strong>(arg, struct)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<h4 id="label-Your+struct+contains+an+array+of+exact+length-2C+each+of+whom-27s+elements+has+its+own+subset+of+typedef-2C+struct-2C+and+possibly+prc">Your <strong>struct</strong> contains an array of exact length, each of whom&#39;s elements has its own subset of <strong>typedef</strong>, <strong>struct</strong>, and possibly <strong>prc</strong></h4>
+<ul><li>
+<p><strong>structs</strong> - Must be an array of exact length, each element of which is a sub array containing <strong>typedef</strong>, <strong>struct</strong>, and an optional <strong>prc</strong>, in that order.  Can accept <strong>:typeof</strong>, <strong>:arrayof</strong>, <strong>:anyof</strong>, <strong>:anyNof</strong>, <strong>:formof</strong>, and <strong>:adv_formof</strong>.</p>
+</li><li>
+<p>Will NOT accept <strong>:kwargsof</strong> or <strong>:and_kwargsof</strong>.</p>
+</li><li>
+<p>Will return false if user input appears out of order with respect to the <strong>struct</strong>.</p>
+</li><li>
+<p>Will not accept a Proc outside of a sub <strong>typedef</strong>.  Each element in <strong>struct</strong> may have its own unique Proc, however, if allowed for that <strong>typedef</strong>.</p>
+</li></ul>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>(Called From a KwargDict instance)</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_my_dict'>my_dict</span><span class='lbracket'>[</span><span class='symbol'>:example</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='symbol'>:adv_formof</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='lbracket'>[</span><span class='symbol'>:typeof</span><span class='comma'>,</span> <span class='const'>Float</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='symbol'>:arrayof</span><span class='comma'>,</span> <span class='const'>Integer</span><span class='rbracket'>]</span><span class='rbracket'>]</span>
+<span class='id identifier rubyid_my_dict'>my_dict</span><span class='lbracket'>[</span><span class='symbol'>:proc_example</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='symbol'>:adv_formof</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='lbracket'>[</span><span class='symbol'>:typeof</span><span class='comma'>,</span> <span class='const'>String</span><span class='comma'>,</span> <span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_s'>s</span><span class='op'>|</span> <span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>&gt;</span> <span class='int'>5</span> <span class='rbrace'>}</span><span class='rbracket'>]</span><span class='comma'>,</span>
+  <span class='lbracket'>[</span><span class='symbol'>:formof</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Float</span><span class='rbracket'>]</span><span class='op'>*</span><span class='int'>3</span> <span class='comma'>,</span> <span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_n'>n</span><span class='op'>|</span> <span class='id identifier rubyid_n'>n</span><span class='period'>.</span><span class='id identifier rubyid_ibetween?'>ibetween?</span><span class='lparen'>(</span><span class='int'>0</span><span class='comma'>,</span><span class='int'>1</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='rbracket'>]</span><span class='rbracket'>]</span>
+<span class='id identifier rubyid_my_dict'>my_dict</span><span class='period'>.</span><span class='id identifier rubyid_check'>check</span><span class='lparen'>(</span><span class='symbol'>:example</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='float'>3.1</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='int'>1</span><span class='comma'>,</span> <span class='int'>2</span><span class='comma'>,</span> <span class='int'>3</span><span class='comma'>,</span> <span class='int'>4</span><span class='comma'>,</span> <span class='int'>5</span><span class='rbracket'>]</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='comment'># =&gt; true
+</span><span class='id identifier rubyid_my_dict'>my_dict</span><span class='period'>.</span><span class='id identifier rubyid_check'>check</span><span class='lparen'>(</span><span class='symbol'>:example</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='float'>3.1</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>1</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>2</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>3</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='comment'># =&gt; false
+</span><span class='id identifier rubyid_my_dict'>my_dict</span><span class='period'>.</span><span class='id identifier rubyid_check'>check</span><span class='lparen'>(</span><span class='symbol'>:proc_example</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Longer</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='float'>0.25</span><span class='comma'>,</span> <span class='float'>0.5</span><span class='comma'>,</span> <span class='float'>1.0</span><span class='rbracket'>]</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='comment'># =&gt; true
+</span><span class='id identifier rubyid_my_dict'>my_dict</span><span class='period'>.</span><span class='id identifier rubyid_check'>check</span><span class='lparen'>(</span><span class='symbol'>:proc_example</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Longer</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='op'>-</span><span class='float'>0.25</span><span class='comma'>,</span> <span class='float'>0.5</span><span class='comma'>,</span> <span class='op'>-</span><span class='float'>1.0</span><span class='rbracket'>]</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='comment'># =&gt; false
+</span><span class='id identifier rubyid_my_dict'>my_dict</span><span class='period'>.</span><span class='id identifier rubyid_check'>check</span><span class='lparen'>(</span><span class='symbol'>:proc_example</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Short</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='float'>0.25</span><span class='comma'>,</span> <span class='float'>0.5</span><span class='comma'>,</span> <span class='float'>1.0</span><span class='rbracket'>]</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='comment'># =&gt; false</span></code></pre>
+    
+  </div>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+145
+146
+147
+148</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/kdict/kwargdict/kwargtypes.rb', line 145</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_adv_formof'>adv_formof</span><span class='lparen'>(</span><span class='id identifier rubyid_arg'>arg</span><span class='comma'>,</span> <span class='id identifier rubyid_struct'>struct</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Array</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>!=</span> <span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span>
+  <span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_zip'>zip</span><span class='lparen'>(</span><span class='id identifier rubyid_struct'>struct</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_all?'>all?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_a'>a</span><span class='comma'>,</span> <span class='id identifier rubyid_s'>s</span><span class='op'>|</span> <span class='id identifier rubyid_valid?'>valid?</span><span class='lparen'>(</span><span class='id identifier rubyid_a'>a</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_s'>s</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="and_kwargsof-instance_method">
+  
+    #<strong>and_kwargsof</strong>(arg, struct)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<h4 id="label-Your+struct+is+structured+like+-3Aadv_formof+but+the+last+element+MUST+be+a+-3Akwargsof+typedef">Your <strong>struct</strong> is structured like <strong>:adv_formof</strong> but the last element MUST be a <strong>:kwargsof</strong> <strong>typedef</strong></h4>
+<ul><li>
+<p><strong>structs</strong> - MUST be an array in the form of <strong>:adv_formof</strong>, but the last sub  <strong>typedef</strong> MUST be a <strong>kwargsof</strong></p>
+</li><li>
+<p>Will return true if given a single value that returns true from the first sub <strong>typedef</strong> in the array.</p>
+</li><li>
+<p>Will return true if given an array of values in the order they appear in <strong>struct</strong>,  without skipping one, and each returns true from its respective sub <strong>typedef</strong></p>
+</li><li>
+<p>Will return true if the previous statement is true but the given array also includes a hash that corresponds to the last sub <strong>typedef</strong> in the <strong>struct</strong>,  which again must always be <strong>:kwargsof</strong>.</p>
+</li><li>
+<p>Will return false if only a hash is present, even if hash elements are all valid to its nested KwargDict</p>
+</li><li>
+<p>Each sub <strong>typedef</strong> may receive a Proc if allowed for that <strong>typedef</strong></p>
+</li></ul>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>(Called From a KwargDict instance)</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_another_dict'>another_dict</span><span class='period'>.</span><span class='id identifier rubyid_add'>add</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='symbol'>:one</span><span class='comma'>,</span> <span class='symbol'>:typeof</span><span class='comma'>,</span> <span class='const'>Float</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='symbol'>:two</span><span class='comma'>,</span> <span class='symbol'>:arrayof</span><span class='comma'>,</span> <span class='const'>String</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_my_dict'>my_dict</span><span class='lbracket'>[</span><span class='symbol'>:example</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='symbol'>:and_kwargsof</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='lbracket'>[</span><span class='symbol'>:typeof</span><span class='comma'>,</span> <span class='const'>String</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='symbol'>:typeof</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="Bool.html" title="Bool (module)">Bool</a></span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='symbol'>:kwargsof</span><span class='comma'>,</span> <span class='id identifier rubyid_another_dict'>another_dict</span><span class='rbracket'>]</span><span class='rbracket'>]</span>
+<span class='id identifier rubyid_my_dict'>my_dict</span><span class='period'>.</span><span class='id identifier rubyid_check'>check</span><span class='lparen'>(</span><span class='symbol'>:example</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>It works!</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='comment'># =&gt; true
+</span><span class='id identifier rubyid_my_dict'>my_dict</span><span class='period'>.</span><span class='id identifier rubyid_check'>check</span><span class='lparen'>(</span><span class='symbol'>:example</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>And this.</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='comment'># =&gt; true
+</span><span class='id identifier rubyid_my_dict'>my_dict</span><span class='period'>.</span><span class='id identifier rubyid_check'>check</span><span class='lparen'>(</span><span class='symbol'>:example</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>This too.</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='kw'>true</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='comment'># =&gt; true
+</span><span class='id identifier rubyid_my_dict'>my_dict</span><span class='period'>.</span><span class='id identifier rubyid_check'>check</span><span class='lparen'>(</span><span class='symbol'>:example</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>As does this.</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='label'>two:</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Super!</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='comment'># =&gt; true
+</span><span class='id identifier rubyid_my_dict'>my_dict</span><span class='period'>.</span><span class='id identifier rubyid_check'>check</span><span class='lparen'>(</span><span class='symbol'>:example</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Even this works.</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='label'>two:</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Yep.</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='label'>one:</span><span class='float'>3.1</span><span class='rbrace'>}</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='comment'># =&gt; true
+</span><span class='id identifier rubyid_my_dict'>my_dict</span><span class='period'>.</span><span class='id identifier rubyid_check'>check</span><span class='lparen'>(</span><span class='symbol'>:example</span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span> <span class='comment'># =&gt; false | Skips the first element of :example
+</span><span class='id identifier rubyid_my_dict'>my_dict</span><span class='period'>.</span><span class='id identifier rubyid_check'>check</span><span class='lparen'>(</span><span class='symbol'>:example</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='kw'>true</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>It broke!</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='comment'># =&gt; false | Elements appear out of order
+</span><span class='id identifier rubyid_my_dict'>my_dict</span><span class='period'>.</span><span class='id identifier rubyid_check'>check</span><span class='lparen'>(</span><span class='symbol'>:example</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='label'>one:</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Nope</span><span class='tstring_end'>&#39;</span></span><span class='rbrace'>}</span><span class='rparen'>)</span> <span class='comment'># =&gt; false </span></code></pre>
+    
+  </div>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/kdict/kwargdict/kwargtypes.rb', line 173</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_and_kwargsof'>and_kwargsof</span><span class='lparen'>(</span><span class='id identifier rubyid_arg'>arg</span><span class='comma'>,</span> <span class='id identifier rubyid_struct'>struct</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>if</span> <span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Hash</span><span class='rparen'>)</span>
+  
+  <span class='comment'># If only one arg of several are present and it&#39;s the first...
+</span>  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Array</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_valid?'>valid?</span><span class='lparen'>(</span><span class='id identifier rubyid_arg'>arg</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_struct'>struct</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='kw'>end</span> 
+
+  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_arg'>arg</span><span class='lbracket'>[</span><span class='op'>-</span><span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Hash</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_adv_formof'>adv_formof</span><span class='lparen'>(</span><span class='id identifier rubyid_arg'>arg</span><span class='comma'>,</span> <span class='id identifier rubyid_struct'>struct</span><span class='lbracket'>[</span><span class='int'>0</span><span class='op'>...</span><span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_adv_formof'>adv_formof</span><span class='lparen'>(</span><span class='id identifier rubyid_arg'>arg</span><span class='lbracket'>[</span><span class='int'>0</span><span class='op'>...</span><span class='op'>-</span><span class='int'>1</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_struct'>struct</span><span class='lbracket'>[</span><span class='int'>0</span><span class='op'>...</span><span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span><span class='op'>-</span><span class='int'>1</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_valid?'>valid?</span><span class='lparen'>(</span><span class='id identifier rubyid_arg'>arg</span><span class='lbracket'>[</span><span class='op'>-</span><span class='int'>1</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_struct'>struct</span><span class='lbracket'>[</span><span class='op'>-</span><span class='int'>1</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="anyNof-instance_method">
+  
+    #<strong>anyNof</strong>(arg, struct, prc = nil)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<h4 id="label-Your+struct+contains+an+element+OR+specific+datatype+in+an+array.">Your <strong>struct</strong> contains an element OR specific datatype in an array.</h4>
+<ul><li>
+<p><strong>structs</strong> - An array of any mixed things you&#39;d like plus generic datatype  keywords <strong>Numeric</strong>, <strong>Float</strong>, <strong>Integer</strong>, <strong>Bool</strong>, <strong>String</strong>, <strong>Symbol</strong></p>
+</li><li>
+<p>Can accept a Proc that will only operate on a given value if it&#39;s identified  by a generic datatype in <strong>struct</strong> after a check for explicit existence in the array</p>
+</li></ul>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>(Called From a KwargDict instance)</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_my_dict'>my_dict</span><span class='lbracket'>[</span><span class='symbol'>:example</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='symbol'>:anyNof</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Integer</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>red</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>blue</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>magenta</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+<span class='id identifier rubyid_my_dict'>my_dict</span><span class='lbracket'>[</span><span class='symbol'>:proc_example</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='symbol'>:anyNof</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Float</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>green</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='float'>3.1</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_n'>n</span><span class='op'>|</span> <span class='id identifier rubyid_n'>n</span> <span class='op'>&gt;</span> <span class='int'>5</span> <span class='rbrace'>}</span>
+<span class='id identifier rubyid_my_dict'>my_dict</span><span class='period'>.</span><span class='id identifier rubyid_check'>check</span><span class='lparen'>(</span><span class='symbol'>:example</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>red</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='comment'># =&gt; true
+</span><span class='id identifier rubyid_my_dict'>my_dict</span><span class='period'>.</span><span class='id identifier rubyid_check'>check</span><span class='lparen'>(</span><span class='symbol'>:example</span><span class='comma'>,</span> <span class='int'>34</span><span class='rparen'>)</span> <span class='comment'># =&gt; true
+</span><span class='id identifier rubyid_my_dict'>my_dict</span><span class='period'>.</span><span class='id identifier rubyid_check'>check</span><span class='lparen'>(</span><span class='symbol'>:proc_example</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>green</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='comment'># =&gt; true
+</span><span class='id identifier rubyid_my_dict'>my_dict</span><span class='period'>.</span><span class='id identifier rubyid_check'>check</span><span class='lparen'>(</span><span class='symbol'>:proc_example</span><span class='comma'>,</span> <span class='float'>6.1</span><span class='rparen'>)</span> <span class='comment'># =&gt; true
+</span><span class='id identifier rubyid_my_dict'>my_dict</span><span class='period'>.</span><span class='id identifier rubyid_check'>check</span><span class='lparen'>(</span><span class='symbol'>:proc_example</span><span class='comma'>,</span> <span class='float'>3.1</span><span class='rparen'>)</span> <span class='comment'># =&gt; true</span></code></pre>
+    
+  </div>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+81
+82
+83
+84
+85
+86
+87
+88</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/kdict/kwargdict/kwargtypes.rb', line 81</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_anyNof'>anyNof</span><span class='lparen'>(</span><span class='id identifier rubyid_arg'>arg</span><span class='comma'>,</span> <span class='id identifier rubyid_struct'>struct</span><span class='comma'>,</span> <span class='id identifier rubyid_prc'>prc</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_prc'>prc</span> <span class='op'>||=</span> <span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span><span class='kw'>true</span><span class='rbrace'>}</span>
+  <span class='kw'>return</span> <span class='kw'>true</span> <span class='kw'>if</span> <span class='id identifier rubyid_anyof'>anyof</span><span class='lparen'>(</span><span class='id identifier rubyid_arg'>arg</span><span class='comma'>,</span> <span class='id identifier rubyid_struct'>struct</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_ele'>ele</span><span class='op'>|</span> <span class='cvar'>@@types</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_ele'>ele</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_type'>type</span><span class='op'>|</span> <span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_prc'>prc</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_arg'>arg</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+    <span class='kw'>return</span> <span class='kw'>true</span>
+  <span class='kw'>end</span>
+  <span class='kw'>false</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="anyof-instance_method">
+  
+    #<strong>anyof</strong>(arg, struct)  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<h4 id="label-Your+struct+contains+a+singular+element+that+can+be+found+in+an+array.">Your <strong>struct</strong> contains a singular element that can be found in an array.</h4>
+<ul><li>
+<p><strong>structs</strong> - An array of any mix of things you&#39;d like, EXCEPT other instances of KwargModels or KwargDicts.</p>
+</li><li>
+<p>Will not accept a Proc and must not contain generic datatype symbols.</p>
+</li></ul>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>(Called From a KwargDict instance)</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_my_dict'>my_dict</span><span class='lbracket'>[</span><span class='symbol'>:example</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='symbol'>:anyof</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>xx-small</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>x-small</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>large</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='float'>3.2</span><span class='rbracket'>]</span>
+<span class='id identifier rubyid_my_dict'>my_dict</span><span class='period'>.</span><span class='id identifier rubyid_check'>check</span><span class='lparen'>(</span><span class='symbol'>:example</span><span class='comma'>,</span> <span class='float'>3.2</span><span class='rparen'>)</span> <span class='comment'># =&gt; true
+</span><span class='id identifier rubyid_my_dict'>my_dict</span><span class='period'>.</span><span class='id identifier rubyid_check'>check</span><span class='lparen'>(</span><span class='symbol'>:example</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>xx-large</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='comment'># =&gt; false</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+63
+64
+65</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/kdict/kwargdict/kwargtypes.rb', line 63</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_anyof'>anyof</span><span class='lparen'>(</span><span class='id identifier rubyid_arg'>arg</span><span class='comma'>,</span> <span class='id identifier rubyid_struct'>struct</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_arg'>arg</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="arrayof-instance_method">
+  
+    #<strong>arrayof</strong>(arg, struct, prc = nil)  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<h4 id="label-Your+struct+contains+an+array+of+any+length+but+contain+only+one+datatype.">Your <strong>struct</strong> contains an array of any length but contain only one datatype.</h4>
+<ul><li>
+<p><strong>structs</strong> - Again some of Ruby&#39;s built-in types plus Bool: <strong>Numeric</strong>, <strong>Float</strong>, <strong>Integer</strong>, <strong>Bool</strong>, <strong>String</strong>, <strong>Symbol</strong></p>
+</li><li>
+<p>Multi-dimensional arrays will be treated as flattened and all values will still be checked against the given <strong>struct</strong></p>
+</li><li>
+<p>Can accept a Proc that must return true for ALL values in the array.</p>
+</li></ul>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>(Called From a KwargDict instance)</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_my_dict'>my_dict</span><span class='lbracket'>[</span><span class='symbol'>:example</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='symbol'>:arrayof</span><span class='comma'>,</span> <span class='const'>Strings</span>
+<span class='id identifier rubyid_my_dict'>my_dict</span><span class='lbracket'>[</span><span class='symbol'>:proc_example</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='symbol'>:arrayof</span><span class='comma'>,</span> <span class='const'>Strings</span><span class='comma'>,</span> <span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_s'>s</span><span class='op'>|</span> <span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>&gt;</span> <span class='int'>2</span> <span class='rbrace'>}</span>
+<span class='id identifier rubyid_my_dict'>my_dict</span><span class='period'>.</span><span class='id identifier rubyid_check'>check</span><span class='lparen'>(</span><span class='symbol'>:example</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>This</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>will</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>return</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>true</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='comment'># =&gt; true
+</span><span class='id identifier rubyid_my_dict'>my_dict</span><span class='period'>.</span><span class='id identifier rubyid_check'>check</span><span class='lparen'>(</span><span class='symbol'>:proc_example</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>This</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>is</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>still</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>false</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='comment'># =&gt; false</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+48
+49
+50
+51
+52</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/kdict/kwargdict/kwargtypes.rb', line 48</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_arrayof'>arrayof</span><span class='lparen'>(</span><span class='id identifier rubyid_arg'>arg</span><span class='comma'>,</span> <span class='id identifier rubyid_struct'>struct</span><span class='comma'>,</span> <span class='id identifier rubyid_prc'>prc</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Array</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_prc'>prc</span> <span class='op'>||=</span> <span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lbrace'>{</span><span class='kw'>true</span><span class='rbrace'>}</span>
+  <span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_flatten'>flatten</span><span class='period'>.</span><span class='id identifier rubyid_all?'>all?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_ele'>ele</span><span class='op'>|</span> <span class='id identifier rubyid_ele'>ele</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='id identifier rubyid_struct'>struct</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_prc'>prc</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_ele'>ele</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="formof-instance_method">
+  
+    #<strong>formof</strong>(arg, struct, prc = nil)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<h4 id="label-Your+struct+contains+an+array+of+exact+length-2C+you+expect+each+element+to+be+contained+in+a+specific+order+and+be+a+generic+datatype">Your <strong>struct</strong> contains an array of exact length, you expect each element to be contained in a specific order and be a generic datatype</h4>
+<ul><li>
+<p><strong>structs</strong> - An array of set length containing generic datatype keywords <strong>Numeric</strong>,  <strong>Float</strong>, <strong>Integer</strong>, <strong>Bool</strong>, <strong>String</strong>, <strong>Symbol</strong>, in a specific order.  Will  return false if user input appears out of order with respect to the <strong>struct</strong>.</p>
+</li><li>
+<p>Can accept a Proc that must return true for ALL values in the array.</p>
+</li></ul>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>(Called From a KwargDict instance)</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_my_dict'>my_dict</span><span class='lbracket'>[</span><span class='symbol'>:example</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='symbol'>:formof</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="Bool.html" title="Bool (module)">Bool</a></span></span><span class='comma'>,</span> <span class='const'>Float</span><span class='comma'>,</span> <span class='const'>String</span><span class='rbracket'>]</span>
+<span class='id identifier rubyid_my_dict'>my_dict</span><span class='lbracket'>[</span><span class='symbol'>:proc_example</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='symbol'>:formof</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Integer</span><span class='comma'>,</span> <span class='const'>Float</span><span class='comma'>,</span> <span class='const'>Float</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_n'>n</span><span class='op'>|</span> <span class='id identifier rubyid_n'>n</span><span class='period'>.</span><span class='id identifier rubyid_between?'>between?</span><span class='lparen'>(</span><span class='int'>1</span><span class='comma'>,</span> <span class='int'>3</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+<span class='id identifier rubyid_my_dict'>my_dict</span><span class='period'>.</span><span class='id identifier rubyid_check'>check</span><span class='lparen'>(</span><span class='symbol'>:example</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='kw'>false</span><span class='comma'>,</span> <span class='float'>3.1</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Holly Dolly</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='comment'># =&gt; true
+</span><span class='id identifier rubyid_my_dict'>my_dict</span><span class='period'>.</span><span class='id identifier rubyid_check'>check</span><span class='lparen'>(</span><span class='symbol'>:example</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='kw'>false</span><span class='comma'>,</span> <span class='float'>3.1</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='comment'># =&gt; false
+</span><span class='id identifier rubyid_my_dict'>my_dict</span><span class='period'>.</span><span class='id identifier rubyid_check'>check</span><span class='lparen'>(</span><span class='symbol'>:example</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Holly Dolly</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='float'>3.1</span><span class='comma'>,</span> <span class='kw'>false</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='comment'># =&gt; false
+</span><span class='id identifier rubyid_my_dict'>my_dict</span><span class='period'>.</span><span class='id identifier rubyid_check'>check</span><span class='lparen'>(</span><span class='symbol'>:proc_example</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='int'>2</span><span class='comma'>,</span> <span class='float'>1.1</span><span class='comma'>,</span> <span class='float'>1.2</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='comment'># =&gt; true
+</span><span class='id identifier rubyid_my_dict'>my_dict</span><span class='period'>.</span><span class='id identifier rubyid_check'>check</span><span class='lparen'>(</span><span class='symbol'>:proc_example</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='float'>1.1</span><span class='comma'>,</span> <span class='int'>2</span><span class='comma'>,</span> <span class='float'>1.4</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='comment'># =&gt; false</span></code></pre>
+    
+  </div>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+104
+105
+106
+107
+108</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/kdict/kwargdict/kwargtypes.rb', line 104</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_formof'>formof</span><span class='lparen'>(</span><span class='id identifier rubyid_arg'>arg</span><span class='comma'>,</span> <span class='id identifier rubyid_struct'>struct</span><span class='comma'>,</span> <span class='id identifier rubyid_prc'>prc</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_prc'>prc</span> <span class='op'>||=</span> <span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span><span class='kw'>true</span><span class='rbrace'>}</span>
+  <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Array</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_zip'>zip</span><span class='lparen'>(</span><span class='id identifier rubyid_struct'>struct</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_all?'>all?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_a'>a</span><span class='comma'>,</span><span class='id identifier rubyid_s'>s</span><span class='op'>|</span> <span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='id identifier rubyid_s'>s</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_prc'>prc</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_a'>a</span><span class='rparen'>)</span> <span class='rbrace'>}</span> <span class='op'>?</span> <span class='lparen'>(</span><span class='kw'>return</span> <span class='kw'>true</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='lparen'>(</span><span class='kw'>return</span> <span class='kw'>false</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="kwargsof-instance_method">
+  
+    #<strong>kwargsof</strong>(arg, struct)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<h4 id="label-Your+struct+contains+a+hash+that+corresponds+to+another+KwargDict">Your <strong>struct</strong> contains a hash that corresponds to another KwargDict</h4>
+<ul><li>
+<p>**<strong>structs</strong>** - Can only be another KwargDict instance.</p>
+</li><li>
+<p>Will not accept a Proc</p>
+</li><li>
+<p>Input hash need not contain every <strong>kword</strong> from the nested KwargDict to return true</p>
+</li><li>
+<p>Will return true only if every key-arg pair in input hash is valid in nested KwargDict</p>
+</li></ul>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>(Called From a KwargDict instance)</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_another_dict'>another_dict</span><span class='period'>.</span><span class='id identifier rubyid_add'>add</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='symbol'>:one</span><span class='comma'>,</span> <span class='symbol'>:typeof</span><span class='comma'>,</span> <span class='const'>Float</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='symbol'>:two</span><span class='comma'>,</span> <span class='symbol'>:arrayof</span><span class='comma'>,</span> <span class='const'>String</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='symbol'>:three</span><span class='comma'>,</span> <span class='symbol'>:typeof</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="Bool.html" title="Bool (module)">Bool</a></span></span><span class='rbracket'>]</span><span class='comma'>,</span>
+  <span class='lbracket'>[</span><span class='symbol'>:and</span><span class='comma'>,</span> <span class='symbol'>:anyof</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>partridge</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>in</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>a</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>pear</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>tree</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_my_dict'>my_dict</span><span class='lbracket'>[</span><span class='symbol'>:example</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='symbol'>:kwargsof</span><span class='comma'>,</span> <span class='id identifier rubyid_another_dict'>another_dict</span>
+<span class='id identifier rubyid_my_dict'>my_dict</span><span class='period'>.</span><span class='id identifier rubyid_check'>check</span><span class='lparen'>(</span><span class='symbol'>:example</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='label'>one:</span><span class='float'>3.1</span><span class='comma'>,</span> <span class='label'>three:</span><span class='kw'>false</span><span class='comma'>,</span> <span class='label'>and:</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>in</span><span class='tstring_end'>&#39;</span></span><span class='rbrace'>}</span><span class='rparen'>)</span> <span class='comment'># =&gt; true
+</span><span class='id identifier rubyid_my_dict'>my_dict</span><span class='period'>.</span><span class='id identifier rubyid_check'>check</span><span class='lparen'>(</span><span class='symbol'>:example</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='label'>two:</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>this</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>works</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='label'>four:</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>without this</span><span class='tstring_end'>&#39;</span></span><span class='rbrace'>}</span><span class='rparen'>)</span> <span class='comment'># =&gt; false
+</span><span class='id identifier rubyid_my_dict'>my_dict</span><span class='period'>.</span><span class='id identifier rubyid_check'>check</span><span class='lparen'>(</span><span class='symbol'>:example</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='label'>two:</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>see?</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='rparen'>)</span> <span class='comment'># =&gt; true</span></code></pre>
+    
+  </div>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+122
+123
+124
+125</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/kdict/kwargdict/kwargtypes.rb', line 122</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_kwargsof'>kwargsof</span><span class='lparen'>(</span><span class='id identifier rubyid_arg'>arg</span><span class='comma'>,</span> <span class='id identifier rubyid_struct'>struct</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='period'>.</span><span class='id identifier rubyid_all?'>all?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_sub_kword'>sub_kword</span><span class='op'>|</span> <span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_has_key?'>has_key?</span><span class='lparen'>(</span><span class='id identifier rubyid_sub_kword'>sub_kword</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_all?'>all?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_sub_word'>sub_word</span><span class='comma'>,</span> <span class='id identifier rubyid_sub_arg'>sub_arg</span><span class='op'>|</span> <span class='id identifier rubyid_valid?'>valid?</span><span class='lparen'>(</span><span class='id identifier rubyid_sub_arg'>sub_arg</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_struct'>struct</span><span class='lbracket'>[</span><span class='id identifier rubyid_sub_word'>sub_word</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_splay'>splay</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="typeof-instance_method">
+  
+    #<strong>typeof</strong>(arg, struct, prc = nil)  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<h4 id="label-Your+struct+contains+a+singular+value+of+exactly+one+datatype.">Your <strong>struct</strong> contains a singular value of exactly one datatype.</h4>
+<ul><li>
+<p><strong>structs</strong> - Some of Ruby&#39;s built-in types plus <strong>Bool</strong>, an added datatype for  true/false collectively.  Acceptable <strong>struct</strong> arguments then, are: <strong>Numeric</strong>, <strong>Float</strong>, <strong>Integer</strong>, <strong>Bool</strong>, <strong>String</strong>, <strong>Symbol</strong></p>
+</li><li>
+<p>Can accept a Proc that must also return true for successful validation</p>
+</li></ul>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>(Called From a KwargDict instance)</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_my_dict'>my_dict</span><span class='lbracket'>[</span><span class='symbol'>:example</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='symbol'>:typeof</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="Bool.html" title="Bool (module)">Bool</a></span></span>
+<span class='id identifier rubyid_my_dict'>my_dict</span><span class='lbracket'>[</span><span class='symbol'>:proc_example</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='symbol'>:typeof</span><span class='comma'>,</span> <span class='const'>Float</span><span class='comma'>,</span> <span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_n'>n</span><span class='op'>|</span> <span class='id identifier rubyid_n'>n</span> <span class='op'>&gt;</span> <span class='float'>5.3</span> <span class='rbrace'>}</span>
+<span class='id identifier rubyid_my_dict'>my_dict</span><span class='period'>.</span><span class='id identifier rubyid_check'>check</span><span class='lparen'>(</span><span class='symbol'>:example</span><span class='comma'>,</span> <span class='kw'>false</span><span class='rparen'>)</span> <span class='comment'># =&gt; true
+</span><span class='id identifier rubyid_my_dict'>my_dict</span><span class='period'>.</span><span class='id identifier rubyid_check'>check</span><span class='lparen'>(</span><span class='symbol'>:proc_example</span><span class='comma'>,</span> <span class='float'>2.1</span><span class='rparen'>)</span> <span class='comment'># =&gt; false</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+30
+31
+32
+33
+34</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/kdict/kwargdict/kwargtypes.rb', line 30</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_typeof'>typeof</span><span class='lparen'>(</span><span class='id identifier rubyid_arg'>arg</span><span class='comma'>,</span> <span class='id identifier rubyid_struct'>struct</span><span class='comma'>,</span> <span class='id identifier rubyid_prc'>prc</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>if</span> <span class='lbracket'>[</span><span class='const'>Hash</span><span class='comma'>,</span> <span class='const'>Array</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_type'>type</span><span class='op'>|</span> <span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_prc'>prc</span> <span class='op'>||=</span> <span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lbrace'>{</span><span class='kw'>true</span><span class='rbrace'>}</span>
+  <span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='id identifier rubyid_struct'>struct</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_prc'>prc</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_arg'>arg</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Thu Apr 11 17:05:22 2019 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.19 (ruby-2.6.2).
+</div>
+
+    </div>
+  </body>
+</html>

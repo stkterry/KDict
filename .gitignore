@@ -1,0 +1,15 @@
+/.bundle/
+/.yardoc
+/_yardoc/
+/coverage/
+/pkg/
+/spec/reports/
+/tmp/
+
+/testing.rb
+/testing2.rb
+/kdict.code-workspace
+/startup.md
+/.directory
+# rspec failure tracking
+.rspec_status
