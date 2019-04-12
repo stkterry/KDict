@@ -1,0 +1,6 @@
+lib/kdict.rb 1c241de8a71a827bcf892d1f636e7d953e89eaee
+lib/kdict/version.rb 0d5a275d2281605bbdebbe20851a80f17a145758
+lib/kdict/kwargdict.rb e3c64767b5243437a06d778c9ce336873847f8eb
+lib/kdict/kwargmodel.rb 4896ba2ba6ecf259e293a782ffb809f8d54fc747
+lib/kdict/kwargdict/kwargtypes.rb 22ed645961099b24d2e943361e2fb2a321706713
+lib/kdict/kwargdict/kwargtypes/bool.rb 94eb3a80af453e3b07e23d66afb55cc872009657

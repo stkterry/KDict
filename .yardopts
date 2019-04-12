@@ -1,2 +1,3 @@
 -
-doc/Example1.md
+--output-dir docs
+docs/Example1.md
