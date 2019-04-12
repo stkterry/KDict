@@ -56,7 +56,7 @@ class KwargDict < Hash
   # @return [Boolean]
   # @example Adding a KwargModel and Checking User Input Against It:
   #   my_dict[:label] = :typeof, String
-  #   my_dict[:rgba] = :formof, [Numeric]*4, Proc.new { |n| n.ibetween(0, 1) }
+  #   my_dict[:rgba] = :formof, [Numeric]*4, Proc.new { |n| 0 <= n && n <= 1 }
   #   my_dict.check(:label, 'Labels Are Fun!') #=> true
   #   my_dict.check(:label, 45) #=> false
   #   my_dict.check(:rgba, [0.5, 1, 0.25, 1]) #=> true

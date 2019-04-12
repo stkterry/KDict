@@ -35,7 +35,7 @@ allowed to modify a label, it's fontsize, it's color, and x_data for a graph.
 ```ruby
 kdict[:label] = :typeof, String
 kdict[:fontsize] = :typeof, Integer
-kdict[:rgb] = :formof, [Integer]*3, Proc.new { |n| n.ibetween?(0, 255) }
+kdict[:rgb] = :formof, [Integer]*3, Proc.new { |n| 0 <= n && n <= 255 }
 kdict[:x_data] = :arrayof, Float
 
 # Or if you prefer a single command
@@ -190,7 +190,7 @@ my_dict.check(:example, [false, 3.1, "Holly Dolly"]) # => true
 my_dict.check(:example, [false, 3.1]) # => false
 my_dict.check(:example, ["Holly Dolly", 3.1, false]) # => false
 
-my_dict[:proc_example] = :formof, [Integer, Float, Float], Proc.new { |n| n.between?(1, 3) }
+my_dict[:proc_example] = :formof, [Integer, Float, Float], Proc.new { |n| 1 < n && n < 3 }
 my_dict.check(:proc_example, [2, 1.1, 1.2]) # => true
 my_dict.check(:proc_example, [1.1, 2, 1.4]) # => false
 ```
@@ -234,7 +234,7 @@ my_dict.check(:example, [3.1, [1, 2, 3, 4, 5]]) # => true
 my_dict.check(:example, [3.1, ['1', '2', '3']]) # => false
 
 my_dict[:proc_example] = :adv_formof, [[:typeof, String, Proc.new { |s| s.length > 5 }],
-  [:formof, [Float]*3 , Proc.new { |n| n.ibetween?(0,1) }]]
+  [:formof, [Float]*3 , Proc.new { |n| 0 <= n && n <= 1 }]]
 my_dict.check(:proc_example, ["Longer", [0.25, 0.5, 1.0]]) # => true
 my_dict.check(:proc_example, ["Longer", [-0.25, 0.5, -1.0]]) # => false
 my_dict.check(:proc_example, ["Short", [0.25, 0.5, 1.0]]) # => false
