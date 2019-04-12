@@ -16,9 +16,6 @@ View source code at: https://github.com/stkterry/KDict/
 
 {file:doc/Example1.md}
 
-*Note: I'm very new to Ruby, less than a month in, as it were.  I suspect this thing might change quite a bit
-  as I better familiarize myself with everything.*
-
 ***
 
 ### KwargDict
