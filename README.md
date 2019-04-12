@@ -127,7 +127,7 @@ my_dict.check(:proc_example, 6) # => false ... note that 6 > 5.3 but 6 is not da
 ***
 
 #### ***:arrayof***
-Your *struct* contains an array of any length but contain only one datatype.
+Your *struct* contains an array of any length but contains only one datatype.
 
 * ***structs*** - Again some of Ruby's built-in types plus Bool: **Numeric, Float, Integer, Bool, String, Symbol**
 * Multi-dimensional arrays will be treated as flattened and all values will still
