@@ -108,6 +108,7 @@ module KwargTypes
   end
 
   # ====Your *struct* contains a hash that corresponds to another KwargDict
+  #
   # * ***structs*** - Can only be another KwargDict instance.
   # * Will not accept a Proc
   # * Input hash need not contain every *kword* from the nested KwargDict to return true
@@ -148,6 +149,7 @@ module KwargTypes
   end
 
 # ====Your *struct* is structured like *:adv_formof* but the last element MUST be a *:kwargsof* *typedef*
+#
 # * *structs* - MUST be an array in the form of *:adv_formof*, but the last sub 
 #   *typedef* MUST be a *kwargsof*
 # * Will return true if given a single value that returns true from the first sub *typedef* in the array.

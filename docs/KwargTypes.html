@@ -200,7 +200,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<h4 id="label-Your+struct+is+structured+like+-3Aadv_formof+but+the+last+element+MUST+be+a+-3Akwargsof+typedef+-2A+structs+-+MUST+be+an+array+in+the+form+of+-3Aadv_formof-2C+but+the+last+sub++++typedef+MUST+be+a+kwargsof+-2A+Will+return+true+if+given+a+single+value+that+returns+true+from+the+first+sub+typedef+in+the+array.">Your <strong>struct</strong> is structured like <strong>:adv_formof</strong> but the last element MUST be a <strong>:kwargsof</strong> <strong>typedef</strong> * <strong>structs</strong> - MUST be an array in the form of <strong>:adv_formof</strong>, but the last sub    <strong>typedef</strong> MUST be a <strong>kwargsof</strong> * Will return true if given a single value that returns true from the first sub <strong>typedef</strong> in the array.</h4>
+<h4 id="label-Your+struct+is+structured+like+-3Aadv_formof+but+the+last+element+MUST+be+a+-3Akwargsof+typedef.">Your <strong>struct</strong> is structured like <strong>:adv_formof</strong> but the last element MUST be a <strong>:kwargsof</strong> <strong>typedef</strong>.</h4>
 </div></span>
   
 </li>
@@ -320,7 +320,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<h4 id="label-Your+struct+contains+a+hash+that+corresponds+to+another+KwargDict+-2A+-2A-2Astructs-2A-2A+-+Can+only+be+another+KwargDict+instance.">Your <strong>struct</strong> contains a hash that corresponds to another KwargDict * **<strong>structs</strong>** - Can only be another KwargDict instance.</h4>
+<h4 id="label-Your+struct+contains+a+hash+that+corresponds+to+another+KwargDict.">Your <strong>struct</strong> contains a hash that corresponds to another KwargDict.</h4>
 </div></span>
   
 </li>
@@ -413,13 +413,13 @@
       <pre class="lines">
 
 
-145
 146
 147
-148</pre>
+148
+149</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/kdict/kwargdict/kwargtypes.rb', line 145</span>
+      <pre class="code"><span class="info file"># File 'lib/kdict/kwargdict/kwargtypes.rb', line 146</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_adv_formof'>adv_formof</span><span class='lparen'>(</span><span class='id identifier rubyid_arg'>arg</span><span class='comma'>,</span> <span class='id identifier rubyid_struct'>struct</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Array</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>!=</span> <span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span>
@@ -490,8 +490,6 @@
       <pre class="lines">
 
 
-173
-174
 175
 176
 177
@@ -505,10 +503,12 @@
 185
 186
 187
-188</pre>
+188
+189
+190</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/kdict/kwargdict/kwargtypes.rb', line 173</span>
+      <pre class="code"><span class="info file"># File 'lib/kdict/kwargdict/kwargtypes.rb', line 175</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_and_kwargsof'>and_kwargsof</span><span class='lparen'>(</span><span class='id identifier rubyid_arg'>arg</span><span class='comma'>,</span> <span class='id identifier rubyid_struct'>struct</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>if</span> <span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Hash</span><span class='rparen'>)</span>
@@ -878,13 +878,13 @@
       <pre class="lines">
 
 
-122
 123
 124
-125</pre>
+125
+126</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/kdict/kwargdict/kwargtypes.rb', line 122</span>
+      <pre class="code"><span class="info file"># File 'lib/kdict/kwargdict/kwargtypes.rb', line 123</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_kwargsof'>kwargsof</span><span class='lparen'>(</span><span class='id identifier rubyid_arg'>arg</span><span class='comma'>,</span> <span class='id identifier rubyid_struct'>struct</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='period'>.</span><span class='id identifier rubyid_all?'>all?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_sub_kword'>sub_kword</span><span class='op'>|</span> <span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_has_key?'>has_key?</span><span class='lparen'>(</span><span class='id identifier rubyid_sub_kword'>sub_kword</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
@@ -978,7 +978,7 @@
 </div>
 
       <div id="footer">
-  Generated on Thu Apr 11 20:40:29 2019 by
+  Generated on Thu Apr 11 21:45:30 2019 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.19 (ruby-2.6.2).
 </div>
