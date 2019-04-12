@@ -12,6 +12,7 @@ so take the time to look at the example documentation and perhaps run a few of
 them yourself.
 
 View full docs at: https://stkterry.github.io/KDict
+
 View source code at: https://github.com/stkterry/KDict
 
 {file:doc/Example1.md}
