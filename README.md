@@ -8,8 +8,7 @@ With the included *typedefs* users can create simple to complex validaters in
 just a single line of code.
 
 Examples avaible here in the README don't offer up the full scope of usefulness,
-so take the time to look at the example documentation and perhaps run a few of
-them yourself.
+so take the time to look at the example documentation in the full docs page.
 
 View full docs at: https://stkterry.github.io/KDict
 
